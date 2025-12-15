@@ -1,0 +1,113 @@
+.schedule-status {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 12px 0;
+
+    .status-indicator {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        background: white;
+        border-radius: 8px;
+        border: 2px solid;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+        .status-icon {
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .status-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+
+            .status-label {
+                font-weight: 700;
+                font-size: 14px;
+                line-height: 1.2;
+            }
+
+            .status-description {
+                font-size: 11px;
+                color: #6b7280;
+                line-height: 1.2;
+            }
+        }
+    }
+
+    .status-flow {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        background: #f9fafb;
+        border-radius: 8px;
+        border: 1px solid #e5e7eb;
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            opacity: 0.4;
+            transition: all 0.2s;
+
+            .step-number {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: #e5e7eb;
+                color: #6b7280;
+                font-size: 11px;
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .step-label {
+                font-size: 12px;
+                color: #6b7280;
+                font-weight: 600;
+            }
+
+            &.completed {
+                opacity: 1;
+
+                .step-number {
+                    background: #10b981;
+                    color: white;
+                }
+
+                .step-label {
+                    color: #10b981;
+                }
+            }
+
+            &.active {
+                opacity: 1;
+                background: rgba(59, 130, 246, 0.1);
+
+                .step-number {
+                    background: #3b82f6;
+                    color: white;
+                }
+
+                .step-label {
+                    color: #3b82f6;
+                }
+            }
+        }
+
+        .flow-arrow {
+            color: #d1d5db;
+            font-weight: 700;
+            font-size: 16px;
+        }
+    }
+}
+

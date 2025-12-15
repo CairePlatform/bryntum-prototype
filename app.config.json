@@ -1,0 +1,20 @@
+{
+  "title": "Drag unplanned tasks demo",
+  "description": "Drag unplanned tasks from a list onto the Scheduler component",
+  "source": [
+    "index.html",
+    "package.json",
+    "public/data/data.json",
+    "src/App.scss",
+    "src/App.tsx",
+    "src/AppConfig.tsx",
+    "src/components/GridToolbar.tsx",
+    "src/components/SchedulerToolbar.tsx",
+    "src/lib/Appointment.ts",
+    "src/lib/Doctor.ts",
+    "src/lib/Drag.ts",
+    "src/main.tsx",
+    "tsconfig.json",
+    "vite.config.ts"
+  ]
+}

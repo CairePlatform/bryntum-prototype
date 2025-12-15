@@ -1,0 +1,343 @@
+{
+  "success": true,
+  "project": {
+    "calendar": "workweek"
+  },
+  "calendars": {
+    "rows": [
+      {
+        "id": "workweek",
+        "name": "Arbetsvecka",
+        "intervals": [
+          {
+            "recurrentStartDate": "on Sat",
+            "recurrentEndDate": "on Mon",
+            "isWorking": false
+          }
+        ]
+      },
+      {
+        "id": "allday",
+        "name": "Hela dagen",
+        "unspecifiedTimeIsWorking": false,
+        "intervals": [
+          {
+            "name": "Arbetspass",
+            "recurrentStartDate": "every weekday at 07:00",
+            "recurrentEndDate": "every weekday at 16:00",
+            "isWorking": true
+          }
+        ]
+      }
+    ]
+  },
+  "resources": {
+    "rows": [
+      {
+        "id": 1,
+        "name": "Anna Berg",
+        "role": "Sjuksköterska",
+        "roleIconCls": "b-icon fa-user-nurse",
+        "calendar": "allday",
+        "image": false,
+        "serviceAreaId": "area-1",
+        "serviceAreaName": "Västra",
+        "serviceAreaColor": "#3b82f6"
+      },
+      {
+        "id": 2,
+        "name": "Lars Pettersson",
+        "role": "Undersköterska",
+        "roleIconCls": "b-icon fa-user",
+        "calendar": "allday",
+        "image": false,
+        "serviceAreaId": "area-2",
+        "serviceAreaName": "Östra",
+        "serviceAreaColor": "#10b981"
+      },
+      {
+        "id": 3,
+        "name": "Sara Nordin",
+        "role": "Sjukgymnast",
+        "roleIconCls": "b-icon fa-walking",
+        "calendar": "allday",
+        "image": false,
+        "serviceAreaId": "area-3",
+        "serviceAreaName": "Södra",
+        "serviceAreaColor": "#f59e0b"
+      },
+      {
+        "id": 4,
+        "name": "Elin Chow",
+        "role": "Undersköterska",
+        "roleIconCls": "b-icon fa-user",
+        "calendar": "allday",
+        "image": false,
+        "serviceAreaId": "area-1",
+        "serviceAreaName": "Västra",
+        "serviceAreaColor": "#3b82f6"
+      }
+    ]
+  },
+  "events": {
+    "rows": [
+      {
+        "id": 1,
+        "name": "Morgonomsorg",
+        "iconCls": "fa-hand-holding-medical",
+        "patient": "Fru Nilsson",
+        "duration": 0.75,
+        "eventColor": "blue",
+        "requiredRole": "Undersköterska",
+        "pinned": true,
+        "startDate": "2025-12-04T07:00:00",
+        "endDate": "2025-12-04T07:45:00",
+        "travelMinutes": 0,
+        "address": "Götgatan 12, Stockholm",
+        "priority": 0,
+        "serviceAreaId": "area-1",
+        "serviceAreaName": "Västra",
+        "serviceAreaColor": "#3b82f6",
+        "visitCategory": "daily",
+        "requiredSkills": [],
+        "isOptional": true,
+        "isMandatory": false,
+        "isExtra": true,
+        "isCancelled": false,
+        "isAbsent": false
+      },
+      {
+        "id": 2,
+        "name": "Insulin",
+        "iconCls": "fa-syringe",
+        "patient": "Herr Persson",
+        "duration": 0.5,
+        "eventColor": "green",
+        "requiredRole": "Sjuksköterska",
+        "pinned": true,
+        "startDate": "2025-12-04T08:00:00",
+        "endDate": "2025-12-04T08:30:00",
+        "travelMinutes": 5,
+        "address": "Ringvägen 45, Stockholm",
+        "priority": 0,
+        "serviceAreaId": "area-2",
+        "serviceAreaName": "Östra",
+        "serviceAreaColor": "#10b981",
+        "visitCategory": "daily",
+        "requiredSkills": [],
+        "isOptional": true,
+        "isMandatory": false,
+        "isExtra": false,
+        "isCancelled": false,
+        "isAbsent": false
+      },
+      {
+        "id": 3,
+        "name": "Lunch & medicin",
+        "iconCls": "fa-utensils",
+        "patient": "Fru Ahmed",
+        "duration": 1,
+        "eventColor": "orange",
+        "requiredRole": "Undersköterska",
+        "pinned": false,
+        "startDate": "2025-12-04T11:30:00",
+        "endDate": "2025-12-04T12:30:00",
+        "travelMinutes": 7,
+        "address": "Folkungagatan 88, Stockholm",
+        "priority": 0,
+        "serviceAreaId": "area-3",
+        "serviceAreaName": "Södra",
+        "serviceAreaColor": "#f59e0b",
+        "visitCategory": "daily",
+        "requiredSkills": [],
+        "isOptional": true,
+        "isMandatory": false,
+        "isExtra": false,
+        "isCancelled": true,
+        "isAbsent": false
+      },
+      {
+        "id": 4,
+        "name": "Promenad",
+        "iconCls": "fa-walking",
+        "patient": "Fru Demba",
+        "duration": 0.5,
+        "eventColor": "teal",
+        "requiredRole": "Sjukgymnast",
+        "pinned": false,
+        "startDate": "2025-12-04T10:00:00",
+        "endDate": "2025-12-04T10:30:00",
+        "travelMinutes": 12,
+        "address": "Sockenvägen 23, Enskede",
+        "priority": 0,
+        "serviceAreaId": "area-1",
+        "serviceAreaName": "Västra",
+        "serviceAreaColor": "#3b82f6",
+        "visitCategory": "daily",
+        "requiredSkills": [],
+        "isOptional": true,
+        "isMandatory": false,
+        "isExtra": false,
+        "isCancelled": false,
+        "isAbsent": false
+      },
+      {
+        "id": 5,
+        "name": "Kvällsmat",
+        "iconCls": "fa-utensils",
+        "patient": "Herr Larsson",
+        "duration": 0.75,
+        "eventColor": "purple",
+        "requiredRole": "Undersköterska",
+        "pinned": true,
+        "startDate": "2025-12-04T15:00:00",
+        "endDate": "2025-12-04T15:45:00",
+        "travelMinutes": 6,
+        "address": "Ringvägen 102, Stockholm",
+        "priority": 0,
+        "serviceAreaId": "area-2",
+        "serviceAreaName": "Östra",
+        "serviceAreaColor": "#10b981",
+        "visitCategory": "daily",
+        "requiredSkills": [],
+        "isOptional": true,
+        "isMandatory": false,
+        "isExtra": false,
+        "isCancelled": false,
+        "isAbsent": false
+      },
+      {
+        "id": 6,
+        "name": "Trygghetslarm",
+        "iconCls": "fa-bell",
+        "patient": "Herr Öst",
+        "duration": 0.33,
+        "eventColor": "red",
+        "requiredRole": "Undersköterska",
+        "serviceAreaId": "area-3",
+        "serviceAreaName": "Södra",
+        "serviceAreaColor": "#f59e0b",
+        "visitCategory": "daily",
+        "requiredSkills": [],
+        "isOptional": true,
+        "isMandatory": false,
+        "isExtra": false,
+        "isCancelled": false,
+        "isAbsent": true,
+        "priority": 0
+      },
+      {
+        "id": 7,
+        "name": "Extra insulin",
+        "iconCls": "fa-syringe",
+        "patient": "Herr Persson",
+        "duration": 0.5,
+        "eventColor": "green",
+        "requiredRole": "Sjuksköterska",
+        "serviceAreaId": "area-1",
+        "serviceAreaName": "Västra",
+        "serviceAreaColor": "#3b82f6",
+        "visitCategory": "daily",
+        "requiredSkills": [],
+        "isOptional": true,
+        "isMandatory": false,
+        "isExtra": false,
+        "isCancelled": false,
+        "isAbsent": false,
+        "priority": 0
+      },
+      {
+        "id": 8,
+        "name": "Fönsterputsning",
+        "iconCls": "fa-home",
+        "patient": "Fru Berg",
+        "duration": 1,
+        "eventColor": "gray",
+        "requiredRole": "Undersköterska",
+        "serviceAreaId": "area-2",
+        "serviceAreaName": "Östra",
+        "serviceAreaColor": "#10b981",
+        "visitCategory": "daily",
+        "requiredSkills": [],
+        "isOptional": true,
+        "isMandatory": false,
+        "isExtra": false,
+        "isCancelled": false,
+        "isAbsent": false,
+        "priority": 0
+      }
+    ]
+  },
+  "assignments": {
+    "rows": [
+      {
+        "id": 1,
+        "event": 1,
+        "resource": 1
+      },
+      {
+        "id": 2,
+        "event": 2,
+        "resource": 2
+      },
+      {
+        "id": 3,
+        "event": 3,
+        "resource": 2
+      },
+      {
+        "id": 4,
+        "event": 4,
+        "resource": 3
+      },
+      {
+        "id": 5,
+        "event": 5,
+        "resource": 4
+      }
+    ]
+  },
+  "dependencies": {
+    "rows": []
+  },
+  "resourceTimeRanges": {
+    "rows": [
+      {
+        "id": "lunch-anna",
+        "resourceId": 1,
+        "name": "Lunch",
+        "startDate": "2025-12-04T12:00:00",
+        "endDate": "2025-12-04T12:30:00",
+        "cls": "lunch-break",
+        "iconCls": "fa-coffee"
+      },
+      {
+        "id": "lunch-lars",
+        "resourceId": 2,
+        "name": "Lunch",
+        "startDate": "2025-12-04T12:00:00",
+        "endDate": "2025-12-04T12:30:00",
+        "cls": "lunch-break",
+        "iconCls": "fa-coffee"
+      },
+      {
+        "id": "lunch-sara",
+        "resourceId": 3,
+        "name": "Lunch",
+        "startDate": "2025-12-04T12:00:00",
+        "endDate": "2025-12-04T12:30:00",
+        "cls": "lunch-break",
+        "iconCls": "fa-coffee"
+      },
+      {
+        "id": "lunch-elin",
+        "resourceId": 4,
+        "name": "Lunch",
+        "startDate": "2025-12-04T18:00:00",
+        "endDate": "2025-12-04T18:30:00",
+        "cls": "lunch-break",
+        "iconCls": "fa-coffee"
+      }
+    ]
+  }
+}

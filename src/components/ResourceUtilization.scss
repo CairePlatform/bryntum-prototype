@@ -1,0 +1,83 @@
+.resource-utilization {
+  border-top: 2px solid #e5e7eb;
+  background: #f9fafb;
+  padding: 12px;
+
+  &.timeline-mode {
+    max-height: 200px;
+  }
+
+  &.comparison-mode {
+    height: 250px;
+  }
+
+  .utilization-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+
+    h4 {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    .utilization-legend {
+      display: flex;
+      gap: 12px;
+      font-size: 11px;
+
+      .legend-item {
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-weight: 500;
+
+        &.low {
+          background: #d1fae5;
+          color: #065f46;
+        }
+
+        &.medium {
+          background: #fef3c7;
+          color: #92400e;
+        }
+
+        &.high {
+          background: #fed7aa;
+          color: #9a3412;
+        }
+
+        &.over {
+          background: #fecaca;
+          color: #991b1b;
+        }
+      }
+    }
+  }
+
+  .histogram-container {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// Histogram bar colors
+.b-histogram {
+  .over-allocated {
+    fill: #ef4444;
+  }
+
+  .high-utilization {
+    fill: #f59e0b;
+  }
+
+  .medium-utilization {
+    fill: #fbbf24;
+  }
+
+  .low-utilization {
+    fill: #10b981;
+  }
+}

@@ -1,0 +1,13 @@
+# Bryntum NPM Registry Configuration
+# This file is a template. For Vercel deployment, the BRYNTUM_NPM_TOKEN
+# environment variable will be automatically used.
+
+# Configure Bryntum registry
+@bryntum:registry=https://npm.bryntum.com
+
+# Bypass SSL for Bryntum registry (if needed)
+//npm.bryntum.com/:strict-ssl=false
+
+# Authentication token will be injected from BRYNTUM_NPM_TOKEN environment variable
+# For local development, you can uncomment the line below and add your token:
+# //npm.bryntum.com/:_authToken=your-token-here

@@ -1,0 +1,136 @@
+.embedded-chart {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-top: 16px;
+
+  .chart-header {
+    margin-bottom: 16px;
+
+    h4 {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 700;
+      color: #1f2937;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  .chart-content {
+    display: flex;
+    gap: 12px;
+
+    .chart-y-axis {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 120px;
+      padding: 8px 0;
+      min-width: 35px;
+
+      .y-axis-label {
+        font-size: 10px;
+        color: #6b7280;
+        text-align: right;
+        line-height: 1;
+        padding-right: 8px;
+      }
+    }
+
+        .chart-bars {
+          flex: 1;
+          display: flex;
+          align-items: flex-end;
+          gap: 2px;
+          height: 120px;
+          padding: 8px 0 0 0;
+
+      .chart-bar-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        min-width: 0;
+
+        .chart-bar-wrapper {
+          flex: 1;
+          width: 100%;
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+          min-height: 0;
+          position: relative;
+          border-bottom: 1px solid #e5e7eb;
+        }
+
+        .chart-bar {
+          width: 100%;
+          min-height: 2px;
+          border-radius: 2px 2px 0 0;
+          transition: all 0.2s;
+          cursor: pointer;
+
+          &.capacity {
+            background-color: #3b82f6;
+          }
+
+          &.demand {
+            background-color: #8b5cf6;
+          }
+
+          &.utilization {
+            // Color set inline based on percentage
+          }
+
+          &:hover {
+            opacity: 0.8;
+            transform: scaleY(1.05);
+          }
+        }
+
+        .chart-label {
+          font-size: 9px;
+          color: #6b7280;
+          margin-top: 8px;
+          white-space: nowrap;
+          text-align: center;
+          width: 100%;
+          height: 20px;
+          line-height: 1;
+        }
+      }
+    }
+
+    .chart-legend {
+      display: flex;
+      gap: 16px;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #f3f4f6;
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        color: #6b7280;
+
+        .legend-color {
+          width: 16px;
+          height: 16px;
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+
+  .chart-empty {
+    padding: 40px;
+    text-align: center;
+    color: #9ca3af;
+    font-size: 14px;
+  }
+}

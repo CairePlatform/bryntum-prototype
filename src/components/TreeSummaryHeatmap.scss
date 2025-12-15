@@ -1,0 +1,153 @@
+.tree-summary-heatmap {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-top: 16px;
+
+  .heatmap-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+
+    h4 {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 700;
+      color: #1f2937;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .heatmap-legend {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: #6b7280;
+
+      .legend-label {
+        font-weight: 600;
+      }
+
+      .legend-gradient {
+        display: flex;
+        gap: 2px;
+
+        .legend-color {
+          width: 20px;
+          height: 12px;
+          border-radius: 2px;
+          border: 1px solid #e5e7eb;
+        }
+      }
+    }
+  }
+
+  .heatmap-content {
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 600px;
+
+    .heatmap-grid {
+      display: grid;
+      grid-template-columns: 150px repeat(auto-fit, minmax(40px, 1fr)) 60px;
+      gap: 2px;
+      min-width: fit-content;
+
+      .heatmap-row {
+        display: contents;
+
+        &.header {
+          .heatmap-cell {
+            background: #f9fafb;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #6b7280;
+            padding: 8px 4px;
+            text-align: center;
+            border-bottom: 2px solid #e5e7eb;
+          }
+        }
+
+        .heatmap-cell {
+          padding: 8px 4px;
+          text-align: center;
+          font-size: 11px;
+          border-radius: 2px;
+          transition: all 0.2s;
+
+          &.resource-header,
+          &.resource-name {
+            text-align: left;
+            font-weight: 600;
+            color: #1f2937;
+            position: sticky;
+            left: 0;
+            background: white;
+            z-index: 10;
+            border-right: 2px solid #e5e7eb;
+            padding: 12px 8px;
+            min-width: 180px;
+            box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05);
+          }
+          
+          &.resource-name {
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            
+            .employee-name {
+              font-weight: 600;
+              color: #1f2937;
+            }
+            
+            .employee-visit-count {
+              font-size: 10px;
+              color: #6b7280;
+              font-weight: normal;
+            }
+          }
+
+          &.time-header {
+            font-size: 10px;
+            color: #9ca3af;
+          }
+
+          &.density-cell {
+            cursor: pointer;
+            font-weight: 600;
+            min-width: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            
+            &:hover {
+              transform: scale(1.15);
+              z-index: 5;
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+              border-color: #3b82f6;
+            }
+          }
+
+          &.total-header,
+          &.total-cell {
+            font-weight: 700;
+            background: #f3f4f6;
+            border-left: 2px solid #e5e7eb;
+          }
+        }
+      }
+    }
+  }
+
+  .heatmap-empty {
+    padding: 40px;
+    text-align: center;
+    color: #9ca3af;
+    font-size: 14px;
+  }
+}
