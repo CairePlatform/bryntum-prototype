@@ -5,104 +5,59 @@ A standalone prototype application using Bryntum Scheduler Pro for home care sch
 This example uses Bryntum Scheduler Pro wrapped in the provided `BryntumSchedulerPro` wrapper.
 Drag unplanned tasks from a list onto the Scheduler component.
 
-This application was generated with:
+## Tech Stack
 
 - [React](https://react.dev/) [18.2.0]
 - [Vite](https://vitejs.dev/guide/) [4.3.9]
+- [Bryntum Scheduler Pro](https://bryntum.com/products/schedulerpro/)
 
-## Deployment
+## Prerequisites
 
-This repository is configured for deployment on Vercel. The `vercel.json` file contains the necessary configuration for:
-- Build commands using pnpm
-- Output directory (dist)
-- SPA routing configuration
-- Cache headers for static assets
+- Node.js >= 20.0.0
+- pnpm (recommended), npm, or yarn
+- Bryntum account with access to Scheduler Pro (trial or licensed)
 
-To deploy to Vercel:
-1. Ensure you have the `BRYNTUM_NPM_TOKEN` environment variable set in Vercel
-2. Connect this repository to Vercel
-3. Deploy automatically on push or manually via Vercel CLI
+## Getting Started
 
-# Bryntum Repository access setup
-
-**IMPORTANT NOTE!** These access instructions are mandatory when using the private Bryntum NPM repository.
-
-This application uses npm packages from the Bryntum private NPM repository. You must be logged-in to this repository as
-a licensed or trial user to access the packages.
-
-Please check [Online npm repository guide](https://bryntum.com/products/schedulerpro/docs/guide/SchedulerPro/npm-repository) for the detailed information on the
-sign-up/login process.
-
-# React integration guide
-
-Please check the [Bryntum React integration online guide](https://bryntum.com/products/schedulerpro/docs/guide/SchedulerPro/integration/react/guide) for detailed
-integration information and help.
-
-# Installation
-
-Use the following command to install the example packages after the successful login.
-
-Using **npm**:
+### 1. Clone the Repository
 
 ```shell
-npm install
+git clone <repository-url>
+cd bryntum-prototype
 ```
 
-Using **yarn**:
+### 2. Set Up Bryntum Authentication
+
+This project uses Bryntum packages from their private NPM registry. You need to configure authentication before installing dependencies.
+
+**📖 See [BRYNTUM_SETUP.md](./BRYNTUM_SETUP.md) for complete setup instructions.**
+
+Quick start:
 
 ```shell
-yarn install
+# Copy the example environment file
+cp .env.example .env
+
+# Edit .env and add your Bryntum NPM token
+# Then export it:
+export BRYNTUM_NPM_TOKEN=$(grep "^BRYNTUM_NPM_TOKEN=" .env | cut -d'=' -f2)
 ```
 
-Using **pnpm** (recommended):
+### 3. Install Dependencies
 
 ```shell
 pnpm install
 ```
 
-# Running a development server
-
-To build example and start development server run this command:
-
-Using **npm**:
-
-```shell
-npm run start
-```
-
-Using **yarn**:
-
-```shell
-yarn run start
-```
-
-Using **pnpm**:
+### 4. Run Development Server
 
 ```shell
 pnpm dev
 ```
 
-Navigate to `http://localhost:5173/` or `http://127.0.0.1:5173/` in your browser. We recommend to use latest versions of
-modern browsers like Chrome, FireFox, Safari or Edge. The app will automatically reload if you change any of
-the source files.
+Navigate to `http://localhost:5173/` in your browser.
 
-# Creating a production build
-
-To build production code for the example run this command:
-
-Using **npm**:
-
-```shell
-npm run build
-```
-
-Using **yarn**:
-
-```shell
-yarn run build
-```
-
-Using **pnpm**:
+## Building for Production
 
 ```shell
 pnpm build
@@ -110,19 +65,31 @@ pnpm build
 
 The build artifacts will be stored in the `dist/` directory.
 
-# Distribution zip references
+## Deployment
 
-- Bryntum API docs. Open `docs/index.html` in your browser.
-- Bryntum Repository guide `docs/guides/npm-repository.md`.
-- Bryntum React integration guide `docs/guides/integration/react/guide.md`.
+This repository is configured for deployment on Vercel. See [BRYNTUM_SETUP.md](./BRYNTUM_SETUP.md) for deployment instructions and license requirements.
 
-# Online References
+**⚠️ Note**: Trial licenses cannot be used for server deployments. A commercial license is required for production deployments.
 
-- [Vite](https://vitejs.dev/guide/)
-- [React Framework](https://react.dev/)
-- [Bryntum React integration guide](https://bryntum.com/products/schedulerpro/docs/guide/SchedulerPro/integration/react/guide)
+## Documentation
+
+### Project Documentation
+
+- **[docs/PRD.md](./docs/PRD.md)** - Product Requirements Document
+- **[docs/TIMEPLAN.md](./docs/TIMEPLAN.md)** - Project timeline and planning
+- **[docs/DATA.md](./docs/DATA.md)** - Example data documentation and structure
+- **[docs/README.md](./docs/README.md)** - Documentation index
+
+### Setup & Configuration
+
+- **Bryntum Setup**: [BRYNTUM_SETUP.md](./BRYNTUM_SETUP.md) - Complete guide for Bryntum authentication and licensing
+
+### External Resources
+
 - [Bryntum Scheduler Pro documentation](https://bryntum.com/products/schedulerpro/docs/)
+- [Bryntum React integration guide](https://bryntum.com/products/schedulerpro/docs/guide/SchedulerPro/integration/react/guide)
 - [Bryntum Scheduler Pro examples](https://bryntum.com/products/schedulerpro/examples/)
-- [Bryntum npm repository guide](https://bryntum.com/products/schedulerpro/docs/guide/SchedulerPro/npm-repository)
-- [Bryntum support Forum](https://forum.bryntum.com/)
-- [Contacts us](https://bryntum.com/contact/)
+
+## License
+
+This project uses Bryntum Scheduler Pro, which requires a license. See [BRYNTUM_SETUP.md](./BRYNTUM_SETUP.md) for licensing information.
