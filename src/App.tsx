@@ -61,6 +61,7 @@ function App() {
   const [currentOptimizationScenario, setCurrentOptimizationScenario] =
     useState<OptimizationScenario | null>(null);
   const [rowHeight, setRowHeight] = useState(95); // Default row height
+  const [optimizationScenarios, setOptimizationScenarios] = useState<OptimizationScenario[]>([]);
 
   // Service area state
   const [serviceAreas] = useState([
@@ -420,11 +421,57 @@ function App() {
     [scheduler],
   );
 
-  // Map revision IDs to data files
+  // Current schedule metrics - State to hold fetched metrics
+  const [currentMetrics, setCurrentMetrics] = useState({
+    serviceHours: 0,
+    travelMinutes: 0,
+    waitingMinutes: 0,
+    utilization: 0,
+    pinnedVisits: 0,
+    unplanned: 0,
+  });
+
+  // Fetch metrics and scenarios on mount
+  useEffect(() => {
+    // Load metrics
+    fetch("/data/2.0/mockup_metrics.json")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("✅ Loaded mockup metrics");
+        // Access the first metric entry if it's an array, or the object itself
+        const rawData = Array.isArray(data) ? data[0] : data;
+        // Check if wrapped in scheduleMetrics property (mockup_metrics.json format)
+        const metricsData = rawData.scheduleMetrics || rawData;
+
+        // Map backend metrics format to UI metrics format
+        setCurrentMetrics({
+          serviceHours: metricsData.serviceHours || 0,
+          travelMinutes: Math.round((metricsData.travelTimeSeconds || 0) / 60),
+          waitingMinutes: Math.round((metricsData.waitingTimeSeconds || 0) / 60),
+          utilization: (metricsData.utilizationPercentage || 0) / 100,
+          pinnedVisits: 0, // Not in mockup_metrics.json usually
+          unplanned: metricsData.unassignedVisits || 0,
+        });
+      })
+      .catch((err) => console.error("Failed to load metrics:", err));
+
+    // Load scenarios
+    fetch("/data/2.0/mockup_scenarios.json")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("✅ Loaded mockup scenarios");
+        if (data && data.scenarios) {
+          setOptimizationScenarios(data.scenarios);
+        }
+      })
+      .catch((err) => console.error("Failed to load scenarios:", err));
+  }, []);
+
+  // Map revision IDs to new 2.0 data files
   const revisionDataFiles: Record<string, string> = {
-    "rev-1": "/data/homecare-complete.json", // Baseline (Original)
-    "rev-2": "/data/homecare-revision2.json", // AI Optimized
-    "rev-3": "/data/homecare-revision3.json", // Manual Edits
+    "rev-1": "/data/2.0/mockup_data.json", // Baseline
+    "rev-2": "/data/2.0/mockup_data_optimized.json", // Optimized
+    "rev-3": "/data/2.0/mockup_data_optimized.json", // Manual (using optimized as base for now)
   };
 
   const loadRevisionData = useCallback(
@@ -443,7 +490,9 @@ function App() {
         const data = await response.json();
 
         // Load new data into project
-        await scheduler.project.loadCrudManagerData(data);
+        if (scheduler.project) {
+          await scheduler.project.loadCrudManagerData(data);
+        }
 
         // Add service area data to loaded resources and events
         scheduler.resourceStore.forEach((resource: any, index: number) => {
@@ -487,7 +536,7 @@ function App() {
         console.error(`Failed to load revision data:`, error);
       }
     },
-    [scheduler, grid, showUnplannedPanel],
+    [scheduler, grid, showUnplannedPanel, serviceAreas],
   );
 
   const handleRevisionChange = useCallback(
@@ -503,7 +552,7 @@ function App() {
         loadRevisionData(revisionId);
       }
     },
-    [hasUnsavedChanges, loadRevisionData, showUnplannedPanel],
+    [hasUnsavedChanges, loadRevisionData],
   );
 
   const handleSave = useCallback(() => {
@@ -533,13 +582,6 @@ function App() {
             newServiceAreaId,
             newAreaName: newArea.name,
           });
-
-          // TODO: In production, trigger API call to save new revision
-          // Example:
-          // await api.saveScheduleRevision({
-          //   scheduleId: currentScheduleId,
-          //   changes: [{ visitId, serviceAreaId: newServiceAreaId }],
-          // });
         }
       }
     },
@@ -599,16 +641,6 @@ function App() {
     },
     [scheduler],
   );
-
-  // Current schedule metrics
-  const currentMetrics = {
-    serviceHours: 21.3,
-    travelMinutes: 184,
-    waitingMinutes: 62,
-    utilization: 0.71,
-    pinnedVisits: 0.82,
-    unplanned: 3,
-  };
 
   const getRevisionTitle = (revision: typeof currentRevision) => {
     const typeLabels = {

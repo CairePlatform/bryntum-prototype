@@ -195,6 +195,7 @@ export interface OptimizationScenarioModalProps {
   onClose: () => void;
   onStartOptimization: (scenario: OptimizationScenario) => void;
   currentRevisionName: string;
+  availableScenarios?: OptimizationScenario[];
 }
 
 // Deep clone helper
@@ -206,14 +207,17 @@ export function OptimizationScenarioModal({
   onClose,
   onStartOptimization,
   currentRevisionName,
+  availableScenarios,
 }: OptimizationScenarioModalProps) {
+  const scenarios = availableScenarios && availableScenarios.length > 0 ? availableScenarios : defaultScenarios;
+
   // Store modified scenarios (key = scenario id, value = modified scenario)
   const [modifiedScenarios, setModifiedScenarios] = useState<
     Record<string, OptimizationScenario>
   >({});
 
   const [selectedScenarioId, setSelectedScenarioId] = useState<string>(
-    defaultScenarios.find((s) => s.recommended)?.id || defaultScenarios[0].id,
+    scenarios.find((s) => s.recommended)?.id || scenarios[0].id,
   );
   const [showDetails, setShowDetails] = useState(false);
 
@@ -223,9 +227,9 @@ export function OptimizationScenarioModal({
       if (modifiedScenarios[id]) {
         return modifiedScenarios[id];
       }
-      return defaultScenarios.find((s) => s.id === id) || defaultScenarios[0];
+      return scenarios.find((s) => s.id === id) || scenarios[0];
     },
-    [modifiedScenarios],
+    [modifiedScenarios, scenarios],
   );
 
   const selectedScenario = getScenario(selectedScenarioId);
@@ -241,7 +245,7 @@ export function OptimizationScenarioModal({
       const baseScenario =
         modifiedScenarios[selectedScenarioId] ||
         cloneScenario(
-          defaultScenarios.find((s) => s.id === selectedScenarioId)!,
+          scenarios.find((s) => s.id === selectedScenarioId)!,
         );
 
       const updatedScenario = {
@@ -262,7 +266,7 @@ export function OptimizationScenarioModal({
         [selectedScenarioId]: updatedScenario,
       }));
     },
-    [selectedScenarioId, modifiedScenarios],
+    [selectedScenarioId, modifiedScenarios, scenarios],
   );
 
   // Reset scenario to defaults
@@ -407,7 +411,7 @@ export function OptimizationScenarioModal({
 
         <div className="modal-body">
           <div className="scenarios-grid">
-            {defaultScenarios.map((scenario) => {
+            {scenarios.map((scenario) => {
               const currentScenario = getScenario(scenario.id);
               const modified = isModified(scenario.id);
 
@@ -509,7 +513,7 @@ export function OptimizationScenarioModal({
                           <option value="" disabled>
                             📋 Kopiera från...
                           </option>
-                          {defaultScenarios
+                          {scenarios
                             .filter((s) => !s.isCustom)
                             .map((s) => (
                               <option key={s.id} value={s.id}>

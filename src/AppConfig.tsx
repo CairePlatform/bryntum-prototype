@@ -20,7 +20,7 @@ import { UtilizationChart } from "./lib/UtilizationChart";
 
 export const projectConfig: ProjectModelConfig = {
   autoLoad: true,
-  loadUrl: "./data/homecare-complete.json",
+  loadUrl: "./data/2.0/mockup_data_optimized.json",
   resourceStore: {
     modelClass: Doctor,
     sorters: [{ field: "name", ascending: true }],
@@ -36,8 +36,8 @@ export const projectConfig: ProjectModelConfig = {
 };
 
 export const schedulerProps: BryntumSchedulerProProps = {
-  startDate: new Date(2025, 11, 4, 7),
-  endDate: new Date(2025, 11, 4, 20),
+  startDate: new Date(2025, 2, 24, 7),
+  endDate: new Date(2025, 2, 24, 20),
   rowHeight: 95,
   barMargin: 10,
   eventStyle: "bordered",
@@ -291,7 +291,7 @@ export const schedulerProps: BryntumSchedulerProProps = {
       };
       const transportIcon =
         transportIcons[
-          resource?.transportMode as keyof typeof transportIcons
+        resource?.transportMode as keyof typeof transportIcons
         ] || "fa fa-car";
 
       // EXACTLY like Bryntum official example - use .toString(true) for duration display

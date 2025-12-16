@@ -1,0 +1,128 @@
+{
+  "scenarios": [
+    {
+      "id": "scenario_daily_planning",
+      "name": "Daglig Planering",
+      "description": "Balanserad optimering för daglig planering med fokus på både effektivitet och kontinuitet",
+      "weights": {
+        "minimizeTravelTime": 0.3,
+        "maximizeUtilization": 0.25,
+        "maximizeContinuity": 0.2,
+        "minimizeCost": 0.15,
+        "minimizeWaitingTime": 0.1
+      },
+      "constraints": {
+        "strictTimeWindows": true,
+        "strictSkills": true,
+        "allowOvertime": false,
+        "maxTravelTimeMinutes": 30,
+        "preferPreferredEmployees": true
+      }
+    },
+    {
+      "id": "scenario_new_clients",
+      "name": "Nya Klienter",
+      "description": "Fokus på att infoga nya besök för nya klienter med prioritering av flexibilitet",
+      "weights": {
+        "minimizeTravelTime": 0.2,
+        "maximizeUtilization": 0.3,
+        "maximizeContinuity": 0.15,
+        "minimizeCost": 0.2,
+        "minimizeWaitingTime": 0.15,
+        "maximizeAssignmentRate": 0.4
+      },
+      "constraints": {
+        "strictTimeWindows": false,
+        "strictSkills": true,
+        "allowOvertime": false,
+        "maxTravelTimeMinutes": 45,
+        "preferPreferredEmployees": false,
+        "allowFlexibleTiming": true
+      }
+    },
+    {
+      "id": "scenario_disruption",
+      "name": "Störningshantering",
+      "description": "Hantera avbokningar och frånvarande med snabb omplanering",
+      "weights": {
+        "minimizeTravelTime": 0.25,
+        "maximizeUtilization": 0.35,
+        "maximizeContinuity": 0.1,
+        "minimizeCost": 0.2,
+        "minimizeWaitingTime": 0.1,
+        "minimizeDisruption": 0.3
+      },
+      "constraints": {
+        "strictTimeWindows": false,
+        "strictSkills": true,
+        "allowOvertime": true,
+        "maxTravelTimeMinutes": 40,
+        "preferPreferredEmployees": false,
+        "allowFlexibleTiming": true,
+        "handleCancellations": true
+      }
+    },
+    {
+      "id": "scenario_continuity",
+      "name": "Kontinuitetsfokus",
+      "description": "Maximera vårdkontinuitet genom att prioritera samma vårdgivare för klienter",
+      "weights": {
+        "minimizeTravelTime": 0.15,
+        "maximizeUtilization": 0.2,
+        "maximizeContinuity": 0.5,
+        "minimizeCost": 0.1,
+        "minimizeWaitingTime": 0.05
+      },
+      "constraints": {
+        "strictTimeWindows": true,
+        "strictSkills": true,
+        "allowOvertime": false,
+        "maxTravelTimeMinutes": 35,
+        "preferPreferredEmployees": true,
+        "strictContinuity": true,
+        "continuityThreshold": 0.8
+      }
+    },
+    {
+      "id": "scenario_efficiency",
+      "name": "Maximal Effektivitet",
+      "description": "Minimera resor och kostnader för maximal ekonomisk effektivitet",
+      "weights": {
+        "minimizeTravelTime": 0.4,
+        "maximizeUtilization": 0.35,
+        "maximizeContinuity": 0.05,
+        "minimizeCost": 0.4,
+        "minimizeWaitingTime": 0.2
+      },
+      "constraints": {
+        "strictTimeWindows": true,
+        "strictSkills": true,
+        "allowOvertime": false,
+        "maxTravelTimeMinutes": 25,
+        "preferPreferredEmployees": false,
+        "maximizeCostEfficiency": true
+      }
+    },
+    {
+      "id": "scenario_custom",
+      "name": "Anpassad",
+      "description": "Anpassad scenario med redigerbara vikter och begränsningar",
+      "weights": {
+        "minimizeTravelTime": 0.25,
+        "maximizeUtilization": 0.25,
+        "maximizeContinuity": 0.25,
+        "minimizeCost": 0.25,
+        "minimizeWaitingTime": 0.25
+      },
+      "constraints": {
+        "strictTimeWindows": true,
+        "strictSkills": true,
+        "allowOvertime": false,
+        "maxTravelTimeMinutes": 30,
+        "preferPreferredEmployees": true
+      },
+      "editable": true
+    }
+  ],
+  "defaultScenario": "scenario_daily_planning"
+}
