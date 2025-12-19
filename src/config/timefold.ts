@@ -72,3 +72,4 @@ export function getTimefoldHeaders(): HeadersInit {
     Authorization: `Bearer ${timefoldConfig.apiToken}`,
   };
 }
+

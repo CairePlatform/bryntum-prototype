@@ -2,7 +2,7 @@
   "buildCommand": "pnpm build",
   "outputDirectory": "dist",
   "devCommand": "pnpm dev",
-  "installCommand": "echo '@bryntum:registry=https://npm.bryntum.com' > .npmrc && echo '//npm.bryntum.com/:_authToken='$BRYNTUM_NPM_TOKEN >> .npmrc && echo '//npm.bryntum.com/:strict-ssl=false' >> .npmrc && pnpm install",
+  "installCommand": "./scripts/setup-npmrc.sh && pnpm install",
   "framework": "vite",
   "rewrites": [
     {

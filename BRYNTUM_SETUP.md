@@ -8,11 +8,24 @@ This project uses Bryntum Scheduler Pro packages from their private NPM registry
 - pnpm (recommended), npm, or yarn
 - A Bryntum account with access to Scheduler Pro (trial or licensed)
 
+## License Strategy
+
+This project uses a **two-tier licensing approach** for security and cost efficiency:
+
+- **Local Development**: Developers use **trial licenses** (free, no commercial token needed)
+- **Server Deployment**: **Commercial license** is used automatically on Vercel (configured via environment variables)
+
+This approach:
+- ✅ Keeps the commercial token secure (only in Vercel, not in developer environments)
+- ✅ Allows developers to work without needing access to commercial credentials
+- ✅ Reduces risk of token leakage or accidental exposure
+- ✅ Automatically handles production deployments on Vercel
+
 ## License Types
 
 This project requires access to Bryntum Scheduler Pro packages. 
 
-**💡 Recommendation**: Start with a **trial license** to evaluate the software. If you need to deploy to servers or use in production, you'll need a commercial license.
+**💡 For Developers**: Use a **trial license** for local development. You don't need the commercial token.
 
 You can use either:
 
@@ -25,7 +38,7 @@ You can use either:
   - Not for production use
   - May have watermarks or feature limitations
   - **Server deployment requires a commercial license**
-- **Getting a trial token**: Sign up for a free trial at [bryntum.com](https://bryntum.com) to get your NPM token
+- **Getting a trial token**: Sign up for a free trial at [bryntum.com](https://bryntum.com), then create a token using `npm token create --registry=https://npm.bryntum.com` (see Step 1 below)
 - **Use case**: Perfect for local testing, prototyping, and evaluating Bryntum features on your development machine
 - **⚠️ Important**: Trial licenses will **not work** when deploying to servers (Vercel, AWS, Heroku, etc.). You must have a commercial license for any server deployment.
 
@@ -40,7 +53,7 @@ You can use either:
   - All features unlocked
   - Premium support (depending on license type)
   - Free upgrades during subscription period
-- **Getting a commercial token**: Purchase a license and access your NPM token from your Bryntum account dashboard
+- **Getting a commercial token**: Purchase a license, then create a token using `npm token create --registry=https://npm.bryntum.com` (see Step 1 below)
 - **Use case**: Production applications, commercial products, and SaaS offerings
 
 **Important Notes**:
@@ -53,50 +66,94 @@ You can use either:
 
 ### Step 1: Get Your Bryntum NPM Token
 
-**💡 Recommended: Start with a Trial License**
+**💡 For Developers: Use a Trial License**
 
-For most developers, we recommend starting with a **trial license** to evaluate Bryntum Scheduler Pro:
+All developers should use a **trial license** for local development. You do not need access to the commercial license token.
 
-**For Trial License:**
-- Sign up for a free trial at [https://bryntum.com](https://bryntum.com)
-- Navigate to your account dashboard
-- Find the NPM token section
-- Generate or copy your trial authentication token
-- **Note**: Trial licenses work for local development only and cannot be used for server deployments
+**Getting Your Trial Token:**
 
-**For Commercial License:**
+Tokens are created via command line, not from the dashboard. Follow these steps:
 
-If you need to deploy to servers or use in production, you'll need a commercial license:
+1. **Sign up for a free trial** at [https://bryntum.com](https://bryntum.com) (if you don't have an account)
 
-- **If your organization already has a commercial license:**
-  - Contact your administrator or IT department to obtain the commercial NPM token
-  - The administrator should have access to the Bryntum account dashboard
-  - They can generate or provide you with the commercial authentication token
-  - Make sure to get a token that has access to Scheduler Pro packages
+2. **Log in to npm.bryntum.com**:
+   ```bash
+   npm login --registry=https://npm.bryntum.com
+   ```
+   Enter your Bryntum account email and password when prompted.
 
-- **If you need to purchase a commercial license:**
-  - Visit [Bryntum Licensing](https://bryntum.com/licensing/) to purchase a license
-  - After purchase, log in to your Bryntum account
-  - Navigate to your account dashboard
-  - Find the NPM token section
-  - Generate or copy your commercial authentication token
+3. **Create an access token**:
+   ```bash
+   npm token create --registry=https://npm.bryntum.com
+   ```
+   Enter your password when prompted. The command will output a table with your token:
+   ```
+   ┌──────────┬─────────────────────────┐
+   │ token    │ eyJhb...                │
+   ├──────────┼─────────────────────────┤
+   │ user     │ user@example.com       │
+   ├──────────┼─────────────────────────┤
+   │ readonly │ false                   │
+   ├──────────┼─────────────────────────┤
+   │ created  │ 2021-07-20T01:02:03.00Z │
+   └──────────┴─────────────────────────┘
+   ```
+   Copy the token value (the `eyJhb...` part).
 
-**Both license types:**
+4. **View existing tokens** (optional):
+   ```bash
+   npm token list --registry=https://npm.bryntum.com
+   ```
+
+5. **Use this token** in your local `.env` file (see Step 2)
+
+For detailed instructions, see the [Bryntum npm repository guide - Access Tokens](https://bryntum.com/products/schedulerpro/docs/guide/SchedulerPro/npm-repository#access-tokens).
+
+**Important Notes:**
+- Trial licenses work perfectly for local development
+- Trial licenses cannot be used for server deployments (Vercel uses the commercial license automatically)
+- The commercial license token is only stored in Vercel environment variables
+- Developers don't need access to the commercial token
+
+**For Administrators (Commercial License Setup):**
+
+If you need to set up or update the commercial license on Vercel:
+
+1. **Get the commercial token:**
+   - Log in to npm.bryntum.com with the commercial license account:
+     ```bash
+     npm login --registry=https://npm.bryntum.com
+     ```
+   - Create a new token:
+     ```bash
+     npm token create --registry=https://npm.bryntum.com
+     ```
+   - Copy the token from the output (or view existing tokens with `npm token list --registry=https://npm.bryntum.com`)
+
+2. **Configure in Vercel:**
+   - Go to your Vercel project settings
+   - Navigate to Environment Variables
+   - Set `BRYNTUM_NPM_TOKEN` with the commercial license token
+   - Ensure it's available for Production, Preview, and Development environments
+
+3. **Verify deployment:**
+   - The repository auto-deploys on push
+   - Vercel will use the commercial token automatically during builds
+
+**Token Format:**
+- Both trial and commercial tokens work the same way for NPM authentication
 - The token format and usage are identical
 - For detailed instructions, see the [Bryntum npm repository guide](https://bryntum.com/products/schedulerpro/docs/guide/SchedulerPro/npm-repository)
 - For licensing information, visit [Bryntum Licensing](https://bryntum.com/licensing/)
 
 ### Step 2: Set Up Your Environment
 
-**Option A: Using .env file (Recommended)**
+**Option A: Using .env file (Recommended for convenience)**
 ```shell
-# Use the setup script (easiest):
-./scripts/setup-env.sh
-
-# Or manually:
+# Copy the example file
 cp .env.example .env
 
-# Edit .env and replace 'your-bryntum-npm-token-here' with your actual token
+# Edit .env and replace 'your-bryntum-npm-token-here' with your trial token
 # Then export it in your shell:
 export BRYNTUM_NPM_TOKEN=$(grep "^BRYNTUM_NPM_TOKEN=" .env | cut -d'=' -f2)
 ```
@@ -111,6 +168,8 @@ export BRYNTUM_NPM_TOKEN="your-actual-token-here"
 # Add to ~/.zshrc or ~/.bashrc
 export BRYNTUM_NPM_TOKEN="your-actual-token-here"
 ```
+
+> **Important**: Use your own **trial token**. Do not use any commercial token - that's only configured in Vercel for deployments.
 
 ### Step 3: Verify the Token is Set
 
@@ -133,16 +192,50 @@ If you see authentication errors, verify that:
 
 ## Deployment
 
-**⚠️ License Requirement for Server Deployment**: Trial licenses **cannot** be used for server deployments. You must have a **commercial license** to deploy this application to any server environment (Vercel, AWS, Heroku, etc.). Trial licenses are restricted to local development only.
+### Vercel Deployment (Already Configured)
 
-### Vercel Deployment
+This repository is **automatically deployed to Vercel on push** using a commercial Bryntum license.
 
-This repository is configured for deployment on Vercel. To deploy:
+**Current Setup:**
+- ✅ Repository is connected to Vercel
+- ✅ Commercial license token is configured in Vercel environment variables
+- ✅ Auto-deploys on every push to the main branch
+- ✅ Developers don't need to do anything - deployment happens automatically
 
-1. **Ensure you have a commercial Bryntum license** (trial licenses will not work on servers)
-2. Set the `BRYNTUM_NPM_TOKEN` environment variable in Vercel with your **commercial license token**
-3. Connect this repository to Vercel
-4. Deploy automatically on push or manually via Vercel CLI
+**For Administrators - Updating the Commercial License:**
+
+If you need to update the commercial license token on Vercel:
+
+1. **Get the commercial token:**
+   - Log in to npm.bryntum.com with the commercial license account:
+     ```bash
+     npm login --registry=https://npm.bryntum.com
+     ```
+   - Create or view tokens:
+     ```bash
+     # Create a new token
+     npm token create --registry=https://npm.bryntum.com
+     
+     # Or view existing tokens
+     npm token list --registry=https://npm.bryntum.com
+     ```
+   - Copy the token from the output
+
+2. **Update in Vercel:**
+   - Go to Vercel project → Settings → Environment Variables
+   - Find `BRYNTUM_NPM_TOKEN`
+   - Update with the new commercial token
+   - Ensure it's available for Production, Preview, and Development environments
+
+3. **Redeploy:**
+   - The next push will automatically use the updated token
+   - Or manually trigger a redeploy from Vercel dashboard
+
+**Important Notes:**
+- ⚠️ Trial licenses **cannot** be used for server deployments
+- ✅ Commercial license is required for Vercel deployments (already configured)
+- ✅ Developers use trial licenses locally (no commercial token needed)
+- ✅ Commercial token is only stored in Vercel (secure, not in repository)
 
 For more information on configuring npm for Bryntum packages, see the [Bryntum npm repository guide](https://bryntum.com/products/schedulerpro/docs/guide/SchedulerPro/npm-repository#configure-npm).
 
@@ -176,13 +269,13 @@ If you encounter authentication errors when running `pnpm install`:
    ```
 
 4. **Verify token validity:**
-   - Log in to [bryntum.com](https://bryntum.com) and check your account
+   - View your tokens: `npm token list --registry=https://npm.bryntum.com`
    - Ensure your account has access to Scheduler Pro (trial or commercial license)
    - **Trial licenses**: 
      - Check if your trial period is still active
      - Remember: Trial licenses only work for local development, not on servers
    - **Commercial licenses**: Verify your license is current and active
-   - Generate a new token if needed
+   - Create a new token if needed: `npm token create --registry=https://npm.bryntum.com`
    - Note: Both trial and commercial tokens work the same way for authentication, but trial licenses cannot be used for server deployments
 
 ### Packages Already Installed

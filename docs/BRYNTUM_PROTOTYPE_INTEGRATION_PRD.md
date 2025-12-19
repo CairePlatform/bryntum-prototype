@@ -1,25 +1,37 @@
-# Bryntum Prototype Integration PRD – For External Consultants
+# Bryntum Prototype Integration PRD – Reference Document
+
+> **⚠️ IMPORTANT:** This document is for **reference only**. The prototype is **NOT being integrated** into production.  
+> Production development will start **from scratch** in the private repository: [https://github.com/CairePlatform/beta-appcaire](https://github.com/CairePlatform/beta-appcaire)  
+> **Timeline:** 4 weeks (basic features) + 4 weeks (all features) = 8 weeks total  
+> **Primary Development Guide:** See [BRYNTUM_FROM_SCRATCH_PRD.md](./BRYNTUM_FROM_SCRATCH_PRD.md)
+
+---
 
 **Version:** 1.0  
 **Date:** 2025-12-15  
-**Purpose:** Request for Quote (RFQ) for integrating existing Bryntum prototype with backend API  
-**Target Audience:** Ballistix Consultants  
+**Purpose:** Reference document for understanding prototype structure and components  
 **Prototype Reference:** [https://bryntum-vite.vercel.app](https://bryntum-vite.vercel.app)
 
 ---
 
 ## Executive Summary
 
-Caire is a home-care scheduling platform that needs a professional scheduling calendar UI built with Bryntum SchedulerPro. We have a **working prototype** with mock data that demonstrates all UI features. The task is to:
+This document describes the **bryntum-prototype** repository, which serves as a **UX/UI reference and demonstration** for the production scheduling calendar. The prototype:
 
-1. **Integrate the existing prototype** into our main application
-2. **Connect it to a GraphQL backend API** (to be provided)
-3. **Implement mapper functions** to transform between database format and Bryntum format
-4. **Ensure all features work with real data**
+1. **Demonstrates all UI features** with mock data
+2. **Shows component structure** and Bryntum configurations
+3. **Provides UX/UI reference** for design decisions
+4. **Contains mock data examples** in `public/data/2.0/`
 
-**Key Advantage:** The UI is already built and working. This is primarily an integration project, not a greenfield build.
+**Use this document to:**
+- Understand how features are implemented in the prototype
+- Reference component patterns and structures
+- Understand data formats and transformations
+- Guide UX/UI decisions during production development
 
-**Timeline Estimate:** 2-3 weeks (22-33 hours) based on our internal analysis.
+**Do NOT use this document to:**
+- Integrate prototype code into production (development starts from scratch)
+- Copy components directly (use as reference only)
 
 ---
 

@@ -1,15 +1,16 @@
 # Bryntum Implementation Timeplan
 
 > **Purpose:** Comprehensive timeplan for building the Caire scheduling UI with Bryntum SchedulerPro  
-> **Last Updated:** 2025-12-15  
-> **Total Estimated Time:** 14-19 working days (112-152 hours)  
+> **Last Updated:** 2025-01-27  
+> **Production Repository:** [https://github.com/CairePlatform/beta-appcaire](https://github.com/CairePlatform/beta-appcaire)  
+> **Total Estimated Time:** 8 weeks (4 weeks basic + 4 weeks all features)  
 > **Related Documents:**
 >
 > - [Data Model v2.0](../../03-data/data-model-v2.md)
 > - [Umbrella PRD](../prd-umbrella.md)
 > - [Bryntum Reference](./bryntum-reference.md) - Complete catalogue of all Bryntum examples
-> - [Bryntum Prototype Integration PRD](./BRYNTUM_PROTOTYPE_INTEGRATION_PRD.md) - Integration approach (22-33 hours)
-> - [Bryntum From Scratch PRD](./BRYNTUM_FROM_SCRATCH_PRD.md) - Greenfield build approach (112-152 hours)
+> - [Bryntum Prototype Integration PRD](./BRYNTUM_PROTOTYPE_INTEGRATION_PRD.md) - Reference document (prototype structure)
+> - [Bryntum From Scratch PRD](./BRYNTUM_FROM_SCRATCH_PRD.md) - **Primary development guide**
 > - [Backend Spec](./BRYNTUM_BACKEND_SPEC.md)
 > - [Data Requirements Template](./data-requirements-template.csv) - CSV template for creating mock data for initial development
 > - [Movable Visits Data Template](./movable-visits-data-template.csv) - CSV template for pre-planning/movable visits (from PDF extraction)
@@ -18,14 +19,21 @@
 
 ## Executive Summary
 
-| Phase                     | Categories      | Days           | Hours             |
-| ------------------------- | --------------- | -------------- | ----------------- |
-| **1. Foundation**         | 1, 11           | 2-3            | 16-24             |
-| **2. Core Supply/Demand** | 2, 3, 3.5, 8    | 4-5            | 32-40             |
-| **3. Enhanced Tools**     | 4, 5, 6, 7, 7.5 | 3-4            | 24-32             |
-| **4. Advanced Planning**  | 9               | 3-4            | 24-32             |
-| **5. Polish**             | 10, 12          | 2-3            | 16-24             |
-| **TOTAL**                 | 12 categories   | **14-19 days** | **112-152 hours** |
+### Development Timeline
+
+**Phase 1: Basic Features (4 weeks)**
+- Foundation + Core Supply/Demand features
+- Essential scheduling functionality
+
+**Phase 2: All Features (Additional 4 weeks)**
+- Enhanced tools + Advanced planning + Polish
+- Complete feature set
+
+| Phase                     | Categories      | Weeks | Hours             |
+| ------------------------- | --------------- | ----- | ----------------- |
+| **Phase 1: Basic**        | 1, 2, 3, 3.5, 8, 11, 12 | 4     | ~160-200          |
+| **Phase 2: Complete**     | 4, 5, 6, 7, 7.5, 9, 10 | 4     | ~160-200          |
+| **TOTAL**                 | 12 categories   | **8** | **~320-400 hours** |
 
 ---
 

@@ -73,11 +73,11 @@ export function ComparisonView({
     setRightScheduler(rightSchedulerRef.current?.instance);
   }, [leftSchedulerRef, rightSchedulerRef]);
 
-  // Map revision IDs to data files
+  // Map revision IDs to data files (using 2.0 mockup data)
   const revisionDataFiles: Record<string, string> = {
-    "rev-1": "/data/homecare-complete.json",
-    "rev-2": "/data/homecare-revision2.json",
-    "rev-3": "/data/homecare-revision3.json",
+    "rev-1": "/data/2.0/mockup_data.json", // Baseline
+    "rev-2": "/data/2.0/mockup_data_optimized.json", // Optimized
+    "rev-3": "/data/2.0/mockup_data_optimized.json", // Manual (using optimized as base)
   };
 
   const loadRevisionData = async (

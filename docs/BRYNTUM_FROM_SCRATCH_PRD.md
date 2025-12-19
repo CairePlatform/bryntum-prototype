@@ -1,33 +1,38 @@
-# Bryntum From Scratch PRD – For External Consultants
+# Bryntum From Scratch PRD – Production Development Guide
 
-**Version:** 2.0  
-**Date:** 2025-12-15  
-**Purpose:** Request for Quote (RFQ) for building Bryntum SchedulerPro UI from scratch  
-**Target Audience:** Ballistix Consultants (Professional Bryntum Developers)
+**Version:** 2.1  
+**Date:** 2025-01-27  
+**Purpose:** Complete guide for building Bryntum SchedulerPro UI from scratch in production  
+**Production Repository:** [https://github.com/CairePlatform/beta-appcaire](https://github.com/CairePlatform/beta-appcaire) (private)
 
 ---
 
 ## Executive Summary
 
-Caire is a home-care scheduling platform that requires a professional scheduling calendar UI built with Bryntum SchedulerPro. We need experienced Bryntum developers to build this **from scratch**, following best practices and Bryntum's recommended patterns.
+Caire is a home-care scheduling platform that requires a professional scheduling calendar UI built with Bryntum SchedulerPro. This document is the **primary development guide** for building the scheduling UI **from scratch** in the production repository.
 
 **Scope:**
 
 1. **Build Bryntum SchedulerPro UI** from scratch using official Bryntum examples as reference
-2. **Connect to GraphQL backend API** (to be provided during project)
-3. **Implement data transformation** between backend format and Bryntum format
-4. **Ensure all features work with production data**
+2. **Reference prototype** (`bryntum-prototype` repository) for UX/UI guidance
+3. **Connect to GraphQL backend API** (to be provided during project)
+4. **Implement data transformation** between backend format and Bryntum format
+5. **Ensure all features work with production data**
 
-**Key Requirement:** Build a production-ready, maintainable solution using Bryntum's recommended patterns and examples. This is a **greenfield build**, not an integration of existing code.
+**Key Requirement:** Build a production-ready, maintainable solution using Bryntum's recommended patterns and examples. This is a **greenfield build** in the production repository.
 
-**Timeline Estimate:** 14-19 working days (112-152 hours) - See `bryntum_timeplan.md` for detailed breakdown.
+**Timeline:**
+- **Phase 1 (Basic Features):** 4 weeks
+- **Phase 2 (All Features):** Additional 4 weeks
+- **Total:** 8 weeks
 
-**Note:** If you have an existing prototype, see `BRYNTUM_PROTOTYPE_INTEGRATION_PRD.md` for a faster integration approach (22-33 hours).
+See `bryntum_timeplan.md` for detailed breakdown.
 
-**Note:**
-
-- Backend API specifications and requirements are provided in a separate document (`BRYNTUM_BACKEND_SPEC.md`) that can be attached for reference.
-- **Alternative Approach:** If you have an existing working prototype, see `BRYNTUM_PROTOTYPE_INTEGRATION_PRD.md` for a faster integration approach (22-33 hours vs 112-152 hours).
+**Prototype Reference:**
+- The `bryntum-prototype` repository serves as a **UX/UI reference** and demonstration
+- Live demo: [https://bryntum-vite.vercel.app](https://bryntum-vite.vercel.app)
+- Use for understanding feature requirements and design patterns
+- **Do NOT copy code directly** - use as reference only
 
 ---
 
@@ -36,13 +41,14 @@ Caire is a home-care scheduling platform that requires a professional scheduling
 ### Current State
 
 - ✅ **Requirements Defined:** Complete feature specifications and Bryntum example mappings
+- ✅ **Prototype Available:** UX/UI reference in `bryntum-prototype` repository
 - ✅ **Backend API:** GraphQL API being developed (will be provided during project)
 - ✅ **Data Model:** Normalized database schema documented
-- ❌ **Frontend UI:** Needs to be built from scratch using Bryntum SchedulerPro
+- ❌ **Frontend UI:** Needs to be built from scratch in `beta-appcaire` repository
 
 ### Target State
 
-- ✅ Professional Bryntum SchedulerPro calendar integrated into main application
+- ✅ Professional Bryntum SchedulerPro calendar in production repository (`beta-appcaire`)
 - ✅ Connected to GraphQL API (Express + Apollo Server)
 - ✅ Real-time optimization progress via WebSocket subscriptions
 - ✅ All features working with production data

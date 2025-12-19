@@ -2,46 +2,40 @@
 
 This directory contains utility scripts for the Bryntum prototype project.
 
-## Setup Scripts (Keep - Useful for Developers)
+## Setup Scripts
 
-These scripts help external developers set up their environment:
+This directory contains utility scripts for the Bryntum prototype project:
 
-- **`setup-env.sh`** - Interactive script to create `.env` file from `.env.example`
-- **`setup-npmrc.sh`** - Creates `.npmrc` file with Bryntum registry configuration
-- **`setup-vercel-npmrc.sh`** - Creates `.npmrc` for Vercel deployment builds
+- **`setup-npmrc.sh`** - Creates `.npmrc` file with Bryntum registry configuration (works for both local dev and Vercel)
 
 **Usage:**
 
 ```bash
-# Set up environment (creates .env from .env.example)
-./scripts/setup-env.sh
-
-# After editing .env with your token, load it:
+# Set up .env file (optional, for convenience)
+cp .env.example .env
+# Edit .env with your Bryntum token, then:
 export BRYNTUM_NPM_TOKEN=$(grep "^BRYNTUM_NPM_TOKEN=" .env | cut -d'=' -f2)
 
 # Set up npmrc (requires BRYNTUM_NPM_TOKEN to be set)
 ./scripts/setup-npmrc.sh
 
-# setup-vercel-npmrc.sh is used automatically by Vercel during builds
+# Note: setup-npmrc.sh is also used automatically by Vercel during builds
 # (configured in vercel.json installCommand)
 ```
 
-## Data Transformation Scripts (Temporary - One-Time Use)
+## Data Files
 
-These scripts were used to transform mock JSON data files during prototype development. They are **not needed** for the actual implementation and can be removed or archived.
+All active data files are located in `public/data/2.0/`:
 
-**Temporary Scripts:**
+- `mockup_data.json` - Baseline schedule data
+- `mockup_data_optimized.json` - Optimized schedule data (default)
+- `mockup_metrics.json` - Schedule and employee metrics
+- `mockup_scenarios.json` - Optimization scenario configurations
+- `mockup_movable_templates.json` - Pre-planning visit templates
+- `mockup_data_week.json` - Week view schedule data
+- `mockup_data_unplanned.json` - Unplanned visits data
 
-- `add-travel-events.js` - Added travel events to mock data
-- `apply-status-colors.js` - Applied status colors to mock data
-- `apply-visual-system.js` - Applied visual system to mock data
-- `convert-to-event-buffers.js` - Converted travel to event buffers
-- `fix-event-buffers.js` - Fixed event buffer durations
-- `generate-realistic-data.py` - Generated realistic mock data
-
-**Note:** For the actual implementation, use the CSV templates from `docs/` to create mock data:
+For creating new mock data, use the CSV templates from `docs/`:
 
 - `docs/data-requirements-template.csv` - For schedule data
 - `docs/movable-visits-data-template.csv` - For pre-planning data
-
-These transformation scripts are only useful if you need to modify the existing `public/data/homecare-complete.json` file, which is not necessary for the implementation.
